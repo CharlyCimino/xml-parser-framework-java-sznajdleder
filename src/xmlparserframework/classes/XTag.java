@@ -1,4 +1,4 @@
-package xmlparserframework;
+package xmlparserframework.classes;
 
 import java.util.Collection;
 import java.util.HashMap;

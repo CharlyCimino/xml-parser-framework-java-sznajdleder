@@ -1,5 +1,8 @@
 package xmlparserframework;
 
+import xmlparserframework.classes.XTag;
+import xmlparserframework.classes.XMLFactory;
+
 /**
  *
  * @author Charly Cimino Aprendé más Java en mi canal:
