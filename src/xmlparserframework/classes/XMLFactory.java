@@ -17,18 +17,18 @@ import org.xml.sax.helpers.DefaultHandler;
 public class XMLFactory extends DefaultHandler {
 
     private static XMLFactory instancia = null;
-    private Stack<XTag> pila;
-    private XTag raiz;
+    private Stack<XMLTag> pila;
+    private XMLTag raiz;
 
     private XMLFactory() {
-        pila = new Stack<XTag>();
+        pila = new Stack<XMLTag>();
     }
 
-    public static XTag getByPath(String path) {
+    public static XMLTag getByPath(String path) {
         return instancia.raiz.getSubtag(path);
     }
     
-    public static XTag getByAttribute(String path, String attname, String value) {
+    public static XMLTag getByAttribute(String path, String attname, String value) {
         return instancia.raiz.getSubTagByAttribute(path,attname,value);
     }
 
@@ -46,7 +46,7 @@ public class XMLFactory extends DefaultHandler {
     @Override
     public void startElement(String uri, String localName, String name, Attributes attributes) throws SAXException {
         HashMap<String, String> atts = _cloneAttributes(attributes);
-        XTag t = new XTag(name, atts);
+        XMLTag t = new XMLTag(name, atts);
         if (pila.isEmpty()) {
             raiz = t;
         }
@@ -56,8 +56,8 @@ public class XMLFactory extends DefaultHandler {
     @Override
     public void endElement(String uri, String localName, String name) throws SAXException {
         if (pila.size() > 1) {
-            XTag hijo = pila.pop();
-            XTag padre = pila.pop();
+            XMLTag hijo = pila.pop();
+            XMLTag padre = pila.pop();
             padre.addSubtag(hijo);
             pila.push(padre);
         }

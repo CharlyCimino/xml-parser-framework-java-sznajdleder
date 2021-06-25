@@ -1,6 +1,6 @@
 package xmlparserframework;
 
-import xmlparserframework.classes.XTag;
+import xmlparserframework.classes.XMLTag;
 import xmlparserframework.classes.XMLFactory;
 
 /**
@@ -16,7 +16,7 @@ public class Test {
         XMLFactory.load("test.xml");
         // accedo al tag especificando su "ruta"
         String path = "/framework/data-access/connection-pool";
-        XTag tag = XMLFactory.getByPath(path);
+        XMLTag tag = XMLFactory.getByPath(path);
         // accedo a los valores de los atributos
         String usr = tag.getAtts().get("usr");
         String pwd = tag.getAtts().get("pwd");
